@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <title>Searh</title>
+  </head>
+  <body style="background-color: #150734">
+    <!--header-->
+    <header>
+      <h1>Book<span>Store</span></h1>
+      <ul id="first">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="index.html#featured">Featured</a>
+        </li>
+      </ul>
+      <ul id="second">
+        <li class="i">
+          <a href="search.html" id="search">
+            <i class="fa-solid fa-magnifying-glass"></i
+          ></a>
+        </li>
+        <li class="i" style="margin-left: 10px" id="opencart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </li>
+      </ul>
+      <div class="cart" id="cart">
+        <span> Total is:0$ </span>
+        <div class="center c" id="checkbtn">
+          <div>
+            <a id="che" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--search page continer-->
+    <div class="main">
+      <!--search input-->
+      <div class="searchcon center">
+        <input
+          type="text"
+          name="search"
+          id="searchINP"
+          onkeyup="search()"
+          placeholder="Search"
+        />
+      </div>
+      <!--data page-->
+      <section id="featured">
+        <div class="continer" id="searchbookscon"></div>
+      </section>
+    </div>
+    <script src="js/cart-search-checkout.js"></script>
+    <script>
+      //getting data
+      onload = () => {
+        fetch("https://api.itbook.store/1.0/new") //api for the get request
+          .then((response) => response.json())
+          .then((data) => {
+            data.books.forEach((book) => {
+              //looping on data and set it
+              let card = document.createElement("div");
+              card.innerHTML = `<div  class="card" 
+                description=${book.subtitle}>
+                <span class="dt" isbn=${book.isbn13}>
+                  Details
+                </span>
+                  <img src=${book.image} alt="NOTFOUND">
+                  <div class="text text2">
+                    <h1 class="pName">
+                        ${book.title}
+                    </h1>
+                  </div>
+                  <div class="buybtn">
+                      <p>
+                      ${book.price}
+                      </p>
+                      <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+              </div>`;
+              let con = document.querySelector("#searchbookscon");
+              con.append(card);
+              addToCartSet();
+              detailSet();
+            });
+          });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Details</title>
+</head>
+<body style="background-color:#150734 ;">
+    <!--header-->
+    <header>
+        <h1>Book<span>Store</span></h1>
+        <ul id="first">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="index.html#featured">Featured</a>
+          </li>
+        </ul>
+        <ul id="second">
+          <li class="i">
+           <a href="search.html" id="search"> <i class="fa-solid fa-magnifying-glass"></i></a>
+          </li>
+          <li class="i" style="margin-left:10px ;" id="opencart">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </li>
+        </ul>
+        <!--cart-->
+        <div class="cart " id="cart">
+            <span>
+                Total is:0$
+            </span>
+          <div class=" center c" id="checkbtn">
+            <div>
+                <a id="che" href="checkout.html">Checkout</a>
+                
+            </div>
+        </div>
+        </div>
+      </header>
+<!--detail page continer-->
+<div class="deitail center" id="detail-con">
+</div>
+</div>
+<script src="js/cart-search-checkout.js">
+
+</script>
+<script>
+  //get required book data
+onload=
+function (){
+  try{
+  
+  let card=document.createElement("div");
+  fetch(`https://api.itbook.store/1.0/books/${window.localStorage.isbn}`)
+  .then((response)=> response.json())
+  .then((data)=> {
+  let image;
+  let price;
+  let name;
+  let details;
+  image=data.image;
+  price=data.price;
+  name=data.title;
+  details=data.desc;
+  card.innerHTML=` 
+  <div class="detalisContainer">
+  <div class="img ">
+      <img src=${image} alt="null">
+  </div>
+  <h1>
+      ${name}
+  </h1>
+  <p id="firstP">
+    ${details}
+  </p>
+  <p>
+      ${price}
+  </p>
+  </div>
+  `;
+  let continer=document.querySelector("#detail-con");
+  continer.append(card);
+})
+
+}catch(e){
+console.log(e);
+}
+}
+</script>
+</body>
+</html>

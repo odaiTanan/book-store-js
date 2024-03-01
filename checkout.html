@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--css file-->
+      <link rel="stylesheet" href="css/style.css">
+      <!--a library to get icons(fontawesome)-->
+      <link rel="stylesheet" href="css/all.min.css">
+    <title>Checkout</title>
+</head>
+<body style="background-color: #150734;">
+  <!--header-->
+  <header>
+    <h1>Book<span>Store</span></h1>
+    <ul id="first">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="index.html#featured">Featured</a>
+      </li>
+    </ul>
+    <ul id="second">
+      <li class="i">
+       <a href="search.html" id="search"> <i class="fa-solid fa-magnifying-glass"></i></a>
+      </li>
+      <li class="i" style="margin-left:10px ;" id="opencart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </li>
+    </ul>
+    <!--cart-->
+    <div class="cart " id="cart">
+      <span>
+        Total is:0$
+    </span>
+
+      <div class=" center c" id="checkbtn">
+        <div>
+            <a id="che" href="checkout.html">Checkout</a>
+            
+        </div>
+    </div>
+    </div>
+  </header>
+  <!--main page-->
+  <form action="">
+        <!--cart continer-->
+        <div class="chekpagecontiner">
+            <!--total price lable-->
+          <div class="continue-buying">
+            <h1 id="tot">The total cost is: 0$</h1>
+        </div>
+        <!--a way to pay-->
+        <div class="buying-companies">
+            <input type="radio" name="check" id="visa" >
+              <label for="visa" >
+                <i class="fa-brands fa-cc-visa"></i>
+              </label>
+            <input type="radio" name="check" id="apple" >
+              <label for="apple">
+                <i class="fa-brands fa-apple-pay"></i>
+              </label>
+            </div>
+            <!--required information tocomplete-->
+        <div class="textboxes">
+          <div class="email"> 
+            <input type="email" placeholder="Email"  required/>
+          </div> 
+          <div class="nname">
+            <input type="text" placeholder="first name" class="n1" required/>
+            <input type="text" placeholder="last name" class="n2" required/>
+          </div> 
+          <div class="addres">
+            <input type="text" placeholder="Your Addres" required/>
+          </div>
+          <div class="list-zip">
+            <select name="countries" id="countries" title="country" required>
+                <option value="syria">Syria</option>
+                <option value="leabanon">Leabanon</option>
+                <option value="jordan">Jordan</option>
+                <option value="iraq">Iraq</option>
+                <option value="te uae">The UAE</option>
+            </select>
+            <input type="text" placeholder="ZIP code" class="zip" required>
+        </div>
+        <div class="phone"><input type="text" placeholder="Your phone number" required/></div>
+        </div>
+        <!--buy button-->
+        <button class="Continue">Continue</div>
+    </div>
+  </form>
+    <!--javascript code-->
+    <script src="js/cart-search-checkout.js">
+    </script>
+    <script>
+      //set total
+    let Total=document.getElementById("tot");
+    Total.innerHTML=`The total cost is: ${window.localStorage.getItem("total")} $`;
+    </script>
+</body>
+</html>
